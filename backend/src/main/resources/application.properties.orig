@@ -1,0 +1,38 @@
+spring.application.name=agrismart-backend
+
+server.port=8080
+
+# PostgreSQL
+spring.datasource.url=${DB_URL:jdbc:postgresql://localhost:5432/agrismart}
+spring.datasource.username=${DB_USERNAME:postgres}
+spring.datasource.password=${DB_PASSWORD}
+
+# JPA
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=false
+spring.jpa.open-in-view=false
+spring.jpa.properties.hibernate.format_sql=true
+
+# Connection pool
+spring.datasource.hikari.maximum-pool-size=10
+spring.datasource.hikari.minimum-idle=2
+
+# Actuator
+management.endpoints.web.exposure.include=health,info
+management.endpoint.health.show-details=always
+
+# JSON
+
+# Logging
+logging.level.com.agrismart=INFO
+
+# JWT
+spring.security.oauth2.resourceserver.jwt.secret-key=${JWT_SECRET}
+app.jwt.expiration-ms=86400000
+
+# Frontend / integrations
+app.cors.allowed-origin=${FRONTEND_URL:http://localhost:5173}
+app.weather.base-url=${WEATHER_BASE_URL:https://api.open-meteo.com}
+app.weather.connect-timeout-ms=${WEATHER_CONNECT_TIMEOUT_MS:3000}
+app.weather.read-timeout-ms=${WEATHER_READ_TIMEOUT_MS:5000}
+app.catalog.seed=${SEED_CROP_CATALOG:true}
